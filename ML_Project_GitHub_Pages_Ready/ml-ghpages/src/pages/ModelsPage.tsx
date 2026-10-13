@@ -8,7 +8,7 @@ import {
 import {
   Award,
   ArrowRight,
-  Zap,
+  Activity,
   HelpCircle,
 } from 'lucide-react';
 
@@ -181,7 +181,7 @@ export const ModelsPage: React.FC = () => {
               </div>
 
               <div className="pt-2 text-[10px] text-slate-400 flex items-center gap-1.5 font-sans">
-                <Zap className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+                <Activity className="w-3.5 h-3.5 text-teal-400 shrink-0" />
                 <span>The model selected here dynamically drives predictions across the entire application.</span>
               </div>
             </div>

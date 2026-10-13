@@ -28,20 +28,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: ML_Project_GitHub_Pages_Ready/ml-ghpages/package.json
 
 
       - name: Install dependencies
-        working-directory: ML_Project_GitHub_Pages_Ready
+        working-directory: ML_Project_GitHub_Pages_Ready/ml-ghpages
         run: npm install
 
       - name: Build website
-        working-directory: ML_Project_GitHub_Pages_Ready
+        working-directory: ML_Project_GitHub_Pages_Ready/ml-ghpages
         run: npm run build
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ML_Project_GitHub_Pages_Ready/dist
+          path: ML_Project_GitHub_Pages_Ready/ml-ghpages/dist
 
   deploy:
     environment:

@@ -1,0 +1,6 @@
+{
+  "name": "Heart Disease Prediction - Regularized Logistic Regression",
+  "description": "Academic Machine Learning Project: Heart Disease Prediction Using Ridge- and Lasso-Regularized Logistic Regression on 13 clinical attributes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

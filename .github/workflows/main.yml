@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ML_Project_GitHub_Pages_Ready
-        run: npm ci
+        run: npm install
 
       - name: Build website
         working-directory: ML_Project_GitHub_Pages_Ready

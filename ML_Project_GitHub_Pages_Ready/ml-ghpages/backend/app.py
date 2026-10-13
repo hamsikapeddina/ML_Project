@@ -26,18 +26,11 @@ app.add_middleware(
 )
 
 MODEL_PATH = Path(__file__).resolve().parent / "heart_disease_models.joblib"
-FEATURE_COLUMNS = [
-    "age", "sex", "cp", "trestbps", "chol", "fbs", "restecg",
-    "thalch", "exang", "oldpeak", "slope", "ca", "thal",
-]
 FRONTEND_TO_DATASET = [
     "Age", "Sex", "Chest_Pain_Type", "Resting_Blood_Pressure", "Cholesterol",
     "Fasting_Blood_Sugar", "Resting_ECG", "Maximum_Heart_Rate",
     "Exercise_Induced_Angina", "ST_Depression", "ST_Segment_Slope",
     "Major_Vessels", "Thalassemia",
-]
-MODEL_NAMES = [
-    "Logistic Regression", "Ridge Logistic Regression", "Lasso Logistic Regression"
 ]
 
 
@@ -55,7 +48,7 @@ def load_models() -> dict[str, Any]:
 
 try:
     models = load_models()
-except Exception as exc:  # fail visibly; never fabricate a prediction
+except Exception as exc:
     models = {}
     MODEL_LOAD_ERROR = str(exc)
 else:
@@ -105,7 +98,8 @@ def predict(features: PatientFeatures):
         )
 
     raw_values = [[getattr(features, key) for key in FRONTEND_TO_DATASET]]
-    X = pd.DataFrame(raw_values, columns=FEATURE_COLUMNS)
+    # Preserve the exact feature names used when the saved pipelines were fitted.
+    X = pd.DataFrame(raw_values, columns=FRONTEND_TO_DATASET)
     model = models[features.model_name]
     prediction = int(model.predict(X)[0])
     probability = float(model.predict_proba(X)[0, 1])

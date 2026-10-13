@@ -1,6 +1,8 @@
 /**
- * Actual exploratory data analysis (EDA) results from the UCI Cleveland Heart Disease dataset (303 records).
- * Extracted directly from Scikit-learn / Pandas / Seaborn notebook analysis.
+ * Static EDA preview values for the website UI.
+ * These summaries, correlation values, and coefficient values have NOT been verified
+ * against the executed project notebook in this repository. Do not present them as
+ * final experimental results until they are recomputed from the dataset and notebook.
  */
 
 export interface ClassCount {

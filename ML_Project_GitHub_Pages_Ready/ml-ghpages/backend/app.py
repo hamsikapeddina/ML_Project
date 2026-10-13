@@ -15,7 +15,11 @@ from pydantic import BaseModel, Field
 app = FastAPI(title="Heart Disease ML API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=[
+        "https://hamsikapeddina.github.io",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
     allow_credentials=False,
     allow_methods=["GET", "POST"],
     allow_headers=["Content-Type", "Accept"],
@@ -102,8 +106,6 @@ def predict(features: PatientFeatures):
 
     raw_values = [[getattr(features, key) for key in FRONTEND_TO_DATASET]]
     X = pd.DataFrame(raw_values, columns=FEATURE_COLUMNS)
-    # Each saved object is a full pipeline (imputer + scaler + classifier).
-    # Pass raw values and never apply a separate scaler here.
     model = models[features.model_name]
     prediction = int(model.predict(X)[0])
     probability = float(model.predict_proba(X)[0, 1])

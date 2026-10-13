@@ -8,6 +8,8 @@ import {
 import {
   Award,
   ArrowRight,
+  Zap,
+  HelpCircle,
 } from 'lucide-react';
 
 export const ModelsPage: React.FC = () => {

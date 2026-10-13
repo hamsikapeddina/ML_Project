@@ -1,4 +1,3 @@
-
 name: Deploy Heart Disease Prediction Website
 
 on:
@@ -23,7 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-     
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -31,13 +29,14 @@ jobs:
           cache: npm
           cache-dependency-path: ML_Project_GitHub_Pages_Ready/ml-ghpages/package.json
 
-
       - name: Install dependencies
         working-directory: ML_Project_GitHub_Pages_Ready/ml-ghpages
         run: npm install
 
       - name: Build website
         working-directory: ML_Project_GitHub_Pages_Ready/ml-ghpages
+        env:
+          VITE_API_URL: https://heart-disease-backend-yutr.onrender.com
         run: npm run build
 
       - name: Upload website
